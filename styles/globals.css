@@ -6,6 +6,15 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+html,
+body,
+body > div:first-child,
+div#__next,
+div#__next > div {
+  height: 100%;
+  width: 100%
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -13,4 +22,9 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+/* video.js custom styles */
+.video-js.vjs-v7 .vjs-seek-button.skip-forward.skip-15 .vjs-icon-placeholder::before {
+  content: "15"
 }
