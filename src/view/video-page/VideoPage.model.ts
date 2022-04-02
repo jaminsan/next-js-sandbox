@@ -7,5 +7,5 @@ export type VideoPlayerModel = {
 }
 
 export type AdvertisementModel = {
-  image: string
+  imageUrl: string
 }

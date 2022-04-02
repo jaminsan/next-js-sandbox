@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import 'video.js/dist/video-js.min.css'
 import 'videojs-seek-buttons/dist/videojs-seek-buttons.css'
 import VideoPlayer from './VideoPlayer'
-import { usePlayerPageHook } from './VideoPage.hook'
+import { useVideoPageHook } from './VideoPage.hook'
 import { PlaybackTime } from '../../domain/video/PlaybackTime'
 import Advertisement from './Advertisement'
 
@@ -22,7 +22,7 @@ const VideoPage: React.VFC<PlayerPageProps> = (props) => {
     timeupdateVideo,
     advertisement,
     closeAdvertisement,
-  } = usePlayerPageHook(props.videoId)
+  } = useVideoPageHook(props.videoId)
 
   useEffect(() => {
     loadVideo()
@@ -61,7 +61,7 @@ const VideoPage: React.VFC<PlayerPageProps> = (props) => {
       {advertisement && (
         <div style={advertisementLayout}>
           <Advertisement
-            imageUrl={advertisement.image}
+            imageUrl={advertisement.imageUrl}
             onClose={handleOnClickAdvertisementClose}
           />
         </div>

@@ -5,17 +5,15 @@ import { VideoAdvertisementSchedule } from '../../domain/video/VideoAdvertisemen
 import { VideoPlayer } from '../../domain/video/VideoPlayer'
 import * as AdvertisementPort from '../../port/advertisementPort'
 import { ActiveVideoAdvertisement } from '../../domain/video/ActiveVideoAdvertisement'
+import { AdvertisementModel, VideoPlayerModel } from './VideoPage.model'
 
-export const usePlayerPageHook: (videoId: string) => {
+export const useVideoPageHook: (videoId: string) => {
   loadVideo: () => Promise<void>
-  videoPlayer: {
-    sourceUrl: string
-    seek: { backwardSeconds: number; forwardSeconds: number }
-  } | null
+  videoPlayer: VideoPlayerModel | null
   startVideo: () => void
   pauseVideo: () => void
   timeupdateVideo: (current: PlaybackTime) => void
-  advertisement: { image: string } | null
+  advertisement: AdvertisementModel | null
   closeAdvertisement: () => void
 } = (videoId: string) => {
   const [videoPlayer, setVideoPlayer] = useState<
@@ -87,7 +85,7 @@ export const usePlayerPageHook: (videoId: string) => {
     pauseVideo,
     timeupdateVideo,
     advertisement: advertisement
-      ? { image: advertisement.imageUrl.value }
+      ? { imageUrl: advertisement.imageUrl.value }
       : null,
     closeAdvertisement,
   }
